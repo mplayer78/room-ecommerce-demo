@@ -9,7 +9,6 @@ import mobimage3 from "./images/mobile-image-hero-3.jpg"
 import iconArrow from './images/icon-arrow.svg'
 import about1 from './images/image-about-dark.jpg'
 import about2 from './images/image-about-light.jpg'
-import hamburger from './images/icon-hamburger.svg'
 
 const fakeFetch = [
   {title: "Discover innovative ways to decorate",
@@ -22,10 +21,11 @@ body: "With stores all over the world, it's easy for you to find furniture for y
 imgUrl: image2,
 mobileImgUrl: mobimage2},
 {title: "Manufactured with the best materials",
-body: "Our modern furniture store provide a high level of quality. Our company has invested in advanced technology to ensure that every product is made as perfect and as consistent as possible. With three decades of experience in this industry, we understand what customers want for their home and office."}
+body: "Our modern furniture store provide a high level of quality. Our company has invested in advanced technology to ensure that every product is made as perfect and as consistent as possible. With three decades of experience in this industry, we understand what customers want for their home and office.",
+imgUrl: image3,
+mobileImgUrl: mobimage3}
 ]
 
-const focusType = typeof fakeFetch[0]
 function App() {
   const [currentFocus, setCurrentFocus]:[any, any] = useState(0)
   const [menuExposed, setMenuExposed] = useState(false)
@@ -59,7 +59,7 @@ function App() {
         <div className="details-frame">
           <h1>{currentFocus.title}</h1>
           <p>{currentFocus.body}</p>
-          <a href="#" className="shop-now">
+          <a href="/" className="shop-now">
             Shop Now
             <img src={iconArrow} alt="Arrow"/>
             </a>
