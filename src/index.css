@@ -1,13 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;600;700&display=swap");
+
+:root {
+  --Dark_Gray: hsl(0, 0%, 63%);
+  --Black: hsl(0, 0%, 0%);
+  --White: hsl(0, 0%, 100%);
+  --Very_Dark_Gray: hsl(0, 0%, 27%);
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  font-family: "Spartan", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
+  /* box-sizing: border-box; */
+  overflow-x: hidden;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 3.1em;
+  letter-spacing: -2px;
+  color: var(--Black);
+}
+
+h4 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+h1,
+h4,
+p {
+  text-align: start;
+}
+
+p {
+  font-weight: 600;
+  color: var(--Dark_Gray);
+  line-height: 1.5em;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  margin: auto auto;
+  display: grid;
+  grid-template-areas:
+    "a a b b"
+    "c d d e";
+  grid-template-columns: 30% 30% 10% 30%;
+  grid-template-rows: 66% 34%;
+}
+
+.mask {
+  background-color: #11111100;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.image {
+  z-index: 2000;
+}
+
+.slideshow-frame {
+  grid-area: a;
+  position: relative;
+  background-size: cover;
+  min-height: 360px;
+  background-position: center;
+}
+
+.details-frame {
+  grid-area: b;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.image-left {
+  grid-area: c;
+}
+
+.footer-images {
+  position: relative;
+  background-size: cover;
+  min-height: 240px;
+  background-position: center;
+}
+
+.description-frame {
+  grid-area: d;
+  padding: 70px 45px;
+}
+
+.image-right {
+  grid-area: e;
+}
+
+.links {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.navbar {
+  position: absolute;
+  grid-area: a;
+  width: 100%;
+  max-width: 360px;
+  font-weight: 600;
+  z-index: 10000;
+  color: var(--White);
+  padding: 60px;
+}
+
+.branding {
+  font-size: 2em;
+  transition: display 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.slideshow-nav {
+  grid-column: 3 / 4;
+  grid-row: 1;
+  width: 100%;
+  display: flex;
+  align-self: flex-end;
+  height: calc(100vw / 20);
+  z-index: 1000;
+}
+
+.slideshow-nav-buttons {
+  width: 100%;
+}
+
+.slideshow-nav-button {
+  flex: 1;
+  align-items: stretch;
+  background-color: var(--Black);
+  border: none;
+  background-repeat: no-repeat;
+  background-size: auto;
+  z-index: 1000;
+  background-position: center;
+}
+
+.slideshow-nav-button:hover {
+  background-color: var(--Dark_Gray);
+  border: solid red 2px;
+}
+
+.slideshow-nav-left {
+  background-image: url("./images/icon-angle-left.svg");
+}
+
+.slideshow-nav-right {
+  background-image: url("./images/icon-angle-right.svg");
+}
+
+.shop-now {
+  color: var(--Very_Dark_Gray);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  letter-spacing: 6px;
+  margin: 30px 0px;
+}
+
+[aria-controls="menu-list"] {
+  width: 1rem;
+  height: 1rem;
+  background-size: cover;
+  position: fixed;
+  left: 40px;
+  background-image: url("./images/icon-hamburger.svg");
+  display: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+/* Large Device Portrait */
+@media (max-width: 770px) {
+  .App {
+    grid-template-areas:
+      "a a a a"
+      "b b b b"
+      "c c c c"
+      "d d d d"
+      "e e e e";
+    height: 100%;
+    grid-template-rows: auto;
+  }
+  .details-frame {
+    padding: 70px 30px;
+  }
+  .slideshow-nav {
+    grid-column: 4;
+    z-index: 2000;
+    height: calc(100vw / 8);
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 415px) {
+  .collapsible {
+    display: none;
+  }
+  .links {
+    justify-content: center;
+    width: 100%;
+  }
+  .navbar {
+    margin: 0px;
+    padding: 50px 20px;
+    box-sizing: border-box;
+    overflow: visible;
+    transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    max-width: 100%;
+  }
+  [aria-controls="menu-list"] {
+    display: inline;
+  }
+
+  .navbar-open {
+    background-color: var(--White);
+    max-width: 100%;
+    color: black;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .navbar-open [aria-controls="menu-list"] {
+    background-image: url("./images/icon-close.svg");
+  }
+
+  .navbar-open .branding {
+    display: none;
+  }
+
+  .navbar-open .collapsible {
+    display: inline;
+  }
+
+  .navbar-open .links {
+    justify-content: space-between;
+    max-width: 250px;
+  }
+
+  .open {
+    display: block;
+    background-color: #111111cc;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
 }
